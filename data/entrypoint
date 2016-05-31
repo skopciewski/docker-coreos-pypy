@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+set -eo pipefail
+[[ "$TRACE" ]] && set -x
+
+out() {
+  echo "** $@"
+}
+
+run_escape_to() {
+  exec "$@"
+}
+
+run() {
+  cd /tmp/core_volume
+  cp -rp /tmp/${PYPY_VERSION} .
+  ln -f -n -s ./${PYPY_VERSION} pypy
+  cd pypy/bin
+  ln -f -s /lib64/libncurses.so.5.9 libtinfo.so.5
+}
+
+main() {
+  case "$1" in
+  escto)
+    shift; run_escape_to "$@";;
+  *)
+    run "$@";;
+  esac
+}
+
+main "$@"
