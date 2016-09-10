@@ -4,7 +4,7 @@ VOLUME /tmp/core_volume
 
 RUN apk-install ca-certificates wget
 
-ENV PYPY_VERSION=pypy-5.4.1-linux64
+ENV PYPY_VERSION=pypy2-v5.4.1-linux64
 RUN cd /tmp && \
   wget https://bitbucket.org/pypy/pypy/downloads/${PYPY_VERSION}.tar.bz2 && \
   tar -xjf ${PYPY_VERSION}.tar.bz2 && \
