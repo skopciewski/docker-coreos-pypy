@@ -8,13 +8,15 @@ Installation of PYPY for CoreOS to get Ansible work.
 ### On CoreOS
 
 ```bash
-    docker run --rm -v /home/core:/tmp/core_volume skopciewski/coreos-pypy
+    docker run --rm -v /opt:/tmp/core_volume skopciewski/coreos-pypy
 ```
 
 ### ansible configuration
 
+For ansible >= v2.1 set:
+
 ```
-    ansible_python_interpreter: "LD_LIBRARY_PATH=/home/core/pypy/bin /home/core/pypy/bin/pypy"
+    ansible_python_interpreter: "/opt/pypy/bin/pypy"
 ```
 
 ## Entrypoint
@@ -29,7 +31,7 @@ Any params passed to the container are ignored (except `escto`). Entrypoint will
 If you want to inspect container, run docker with `escto` as first param:
 
 ```bash
-    docker run -it --rm -v /home/core:/tmp/core_volume skopciewski/coreos-pypy escto sh
+    docker run -it --rm -v /opt:/tmp/core_volume skopciewski/coreos-pypy escto sh
 ```
 
 [coreos-pypy]: https://github.com/SergeyZh/coreos-pypy
