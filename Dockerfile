@@ -1,14 +1,14 @@
-FROM gliderlabs/alpine:3.4
+FROM alpine:3.5
 
-VOLUME /tmp/core_volume
+RUN apk add --no-cache ca-certificates wget
 
-RUN apk-install ca-certificates wget
+ENV PYPY_VERSION=pypy2-v5.6.0-linux64
+ENV MOUNTPOINT=/tmp/core_volume
 
-ENV PYPY_VERSION=pypy2-v5.4.1-linux64
-RUN cd /tmp && \
-  wget https://bitbucket.org/pypy/pypy/downloads/${PYPY_VERSION}.tar.bz2 && \
-  tar -xjf ${PYPY_VERSION}.tar.bz2 && \
-  rm ${PYPY_VERSION}.tar.bz2
+RUN cd /tmp \
+  && wget https://bitbucket.org/pypy/pypy/downloads/${PYPY_VERSION}.tar.bz2 \
+  && tar -xjf ${PYPY_VERSION}.tar.bz2 \
+  && rm ${PYPY_VERSION}.tar.bz2
 
 COPY data/entrypoint /entrypoint
 RUN chmod 755 /entrypoint
