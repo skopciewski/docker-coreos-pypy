@@ -11,7 +11,7 @@ run_escape_to() {
 }
 
 run() {
-  cd /tmp/core_volume
+  cd ${MOUNTPOINT}
   cp -rp /tmp/${PYPY_VERSION} .
   ln -f -n -s ./${PYPY_VERSION} pypy
   cd pypy/bin
