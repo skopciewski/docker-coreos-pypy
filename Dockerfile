@@ -1,8 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 RUN apk add --no-cache ca-certificates wget
 
-ENV PYPY_VERSION=pypy2-v5.9.0-linux64
+ENV PYPY_VERSION=pypy2-v6.0.0-linux64
 ENV MOUNTPOINT=/tmp/core_volume
 
 RUN cd /tmp \
