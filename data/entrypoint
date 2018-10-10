@@ -14,8 +14,6 @@ run() {
   cd ${MOUNTPOINT}
   cp -rp /tmp/${PYPY_VERSION} .
   ln -f -n -s ./${PYPY_VERSION} pypy
-  cd pypy/bin
-  ln -f -s /lib64/libncurses.so.5.9 libtinfo.so.5
 }
 
 main() {

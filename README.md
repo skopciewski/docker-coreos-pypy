@@ -24,7 +24,6 @@ For ansible >= v2.1 set:
 Any params passed to the container are ignored (except `escto`). Entrypoint will:
 * copies current verion of PyPy to the mounted volume
 * creates symbolic link `pypy` to the current PyPy version
-* links `/lib64/libncurses.so.5.9` the the PyPy bin dir
 
 ### Escape to
 
